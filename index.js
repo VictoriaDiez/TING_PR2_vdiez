@@ -14,7 +14,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (req, res) => res.send(cool()))
-  .get('/db', (req, res) => {
+  .get('/db', async (req, res) => {
   	try{
   		const client = await pool.connect()
   		const result = await client.query('SELECT * FROM test_table')
