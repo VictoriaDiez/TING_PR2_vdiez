@@ -1,7 +1,7 @@
 const { Pool } = require('pg')
 const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
-	ssl:true
+	ssl: true
 })
 const cool = require('cool-ascii-faces')
 const express = require('express')
@@ -17,7 +17,7 @@ express()
   .get('/db', (req, res) => {
   	try{
   		const client = await pool.connect()
-  		const result = await client.query(SELECT * FROM test_table)
+  		const result = await client.query('SELECT * FROM test_table')
   		const reusults = { 'results': (result) ? result.rows : null}
   		res.render('pages/db', results)
   		client.release()
