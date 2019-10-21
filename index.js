@@ -18,10 +18,10 @@ express()
   	try{
   		const client = await pool.connect()
   		const result = await client.query('SELECT * FROM test_table')
-  		const reusults = { 'results': (result) ? result.rows : null}
+  		const results = { 'results': (result) ? result.rows : null}
   		res.render('pages/db', results)
   		client.release()
-  	} catch (err){
+  	} catch (err) {
   		console.error(err)
   		res.send("Error" + err)
   	}
